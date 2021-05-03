@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" />
+
+    <script src="{{ url_for('static', filename='js/excellentexport.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/result_script.js') }}"></script>
+
+    <title>RoPS Web Application</title>
+
+    <style>
+        body {
+            background-image: url("/web/assets/bg.png"); 
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+
+        .vertical-center {
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .tableFixHead { overflow: auto; max-height: 40vh; }
+        .tableFixHead thead th { position: sticky; top: -1px; z-index: 1; }
+
+    </style>
+</head>
+
+<body>
+    <div class="ui container vertical-center" style="border-radius:10px; background-color: rgba(255, 255, 255, 0.95)">
+        <div class="ui container grid">
+        
+            <!-- Panel Header -->
+            <h2 class="ui center aligned icon header" style="margin-top:20px;">
+                <i class="circular chart bar icon"></i>
+                <div class="content">
+                    Game Results
+                    <div class="sub header">Explore and download your game session statistics here!</div>
+                </div>
+            </h2>
+
+            <!-- Statistics Overview -->
+            <div class="sixteen wide column">
+                <div class="ui five huge statistics">
+
+                    <div class="blue statistic">
+                        <div class="label">
+                          Rounds Played
+                        </div>
+                      <div class="value" id="divRoundsPlayed">
+                        0
+                      </div>
+                    </div>
+
+                    <div class="green statistic">
+                        <div class="label">
+                          Human Wins
+                        </div>
+                      <div class="value" id="divHumanWins">
+                        0
+                      </div>
+                    </div>
+
+                    <div class="violet statistic">
+                        <div class="label">
+                          Robot Wins
+                        </div>
+                      <div class="value" id="divRobotWins">
+                        0
+                      </div>
+                    </div>
+
+                    <div class="grey statistic">
+                        <div class="label">
+                          Draws
+                        </div>
+                        <div class="value" id="divDraws">
+                          0
+                        </div>
+                    </div>
+
+                    <div class="red statistic">
+                        <div class="label">
+                          Invalid Rounds
+                        </div>
+                        <div class="value" id="divInvalidRounds">
+                          0
+                        </div>
+                    </div>
+
+                  </div>
+            </div>
+        
+            <!-- Result Table -->
+            <div class="sixteen wide column">
+                <div class="tableFixHead" style="border: 1px solid #EEEEEE;">
+                    <table class="ui celled table" id="tableResult">
+                        <thead style="position: sticky !important; top: 0; z-index: 2">
+                            <tr style="position: sticky !important; top: 0; z-index: 2">
+                                <th class="center aligned">Game #</th>
+                                <th class="center aligned">Round #</th>
+                                <th class="center aligned">Round Time</th>
+                                <th class="center aligned">Who Won?</th>
+                                <th class="center aligned">Robot's Move</th>
+                                <th class="center aligned">Human's Move</th>
+                                <th class="center aligned">Robot's Rhythm<br>(in BPM)</th>
+                                <th class="center aligned">Human's Rhythm<br>(in BPM)</th>
+                                <th class="center aligned">Move Delay<br>(in seconds)</th>
+                                <th class="center aligned">Round Validity</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tableBody">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Control Buttons -->
+        <div class="ui two buttons bottom attached" style="margin-top: 20px;">
+            <a href="/" class="ui fluid labeled icon orange button" id="btnBack">
+                <i class="left arrow icon"></i>
+                Back
+            </a>
+            <a download="result.csv" href="#" onClick="return ExcellentExport.csv(this, 'tableResult')" class="ui fluid right labeled icon teal button" id="btnDownloadTable">
+                <i class="download icon"></i>
+                Download Table as CSV
+            </a>
+        </div>
+
+    </div>
+    
+
+</body>
+
+</html>

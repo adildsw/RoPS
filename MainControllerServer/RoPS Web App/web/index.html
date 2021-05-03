@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" />
+
+    <script src="{{ url_for('static', filename='js/index_script.js') }}"></script>
+
+    <title>RoPS Web Application</title>
+
+    <style>
+        body {
+            background-image: url("/web/assets/bg.png"); 
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+
+        .vertical-center {
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    </style>
+</head>
+<body>
+    <div class="ui centered grid container vertical-center"
+        style="border-radius: 10px; background-color: rgba(255, 255, 255, 0);">
+        <div class="ui horizontal segments">
+
+            <!-- Project Title -->
+            <div class="ui compact segment">
+                <div style="margin-top:10px;">
+                    <p class="ui header" style="font-size: 3em;">ROCK</p>
+                    <p class="ui header" style="margin-top: -25px; font-size: 3em;">PAPER</p>
+                    <p class="ui header" style="margin-top: -25px; font-size: 3em;">SCISSOR</p>
+                    <p style="margin-top: -20px; font-size: 1.5em;">CS6465 | Spring2021</p>
+                </div>
+            </div>
+
+            <!-- BPM Panel -->
+            <div class="ui compact segment">
+                <div class="ui vertical segments">
+                    <div class="ui compact segment">
+                        <div class="ui header" style="font-size: 5em;" id="labelBPM">60</div>
+                        <div class="ui header" style="margin-top: -25px; font-size: 1em;">BPM</div>
+                    </div>
+                    <div class="ui compact segment">
+                        <div class="ui compact buttons">
+                            <button class="ui olive button" id="btnEasy">E</button>
+                            <button class="ui blue button" id="btnMedium">M</button>
+                            <button class="ui orange button" id="btnHard">H</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Game Control Panel -->
+            <div class="ui compact segment">
+                <div class="ui vertical segments">
+                    <div class="ui compact segment">
+                        <div class="ui header" style="margin-top: -5px; margin-bottom: -5px; font-size: 1em;" id="labelStatus">STATUS: Ready</div>
+                    </div>
+                    <div class="ui compact segment">
+                        <div class="ui vertical buttons">
+                            <a href="/result" class="ui labeled icon button">
+                                <i class="chart bar icon"></i>
+                                View Statistics
+                            </a>
+                            <button class="ui labeled icon button" id="btnSampleRhythm">
+                                <i class="angle double right icon"></i>
+                                Play Sample Rhythm
+                            </button>
+                            <button class="ui labeled icon green button" id="btnStartGame">
+                                <i class="play icon"></i>
+                                Start Game
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
